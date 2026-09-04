@@ -1,23 +1,26 @@
-Product Management API – Task Summary
-Build a simple Node.js + Express Product Management API using the existing project structure.
+### 📦 Task 7: Product Management API
 
-Requirements
-REST API Create the following endpoints under /products:
+Build a RESTful API using Node.js & Express for managing products with proper architecture, in-memory data storage, and views.
 
-GET /products – Get all products.
-GET /products/:id – Get a single product.
-POST /products – Add a new product.
-PUT /products/:id – Update an existing product.
-DELETE /products/:id – Delete a product.
-Project Structure
+---
 
-ProductsController.js → Contains the main business logic, validation, and responses.
-ProductsRoutes.js → Contains only route definitions.
-app.js → Mounts the products routes.
-products.js → Use an in-memory array as the data store.
-views/ → Add a basic product list page and product creation form.
-Validation & Error Handling
+#### 📌 Features & Requirements
 
-Return 400 for invalid or missing input.
-Return 404 when a product is not found.
-Return appropriate success status codes and JSON responses.
+* **REST API Endpoints:**
+  * `GET /products` — Fetch all products.
+  * `GET /products/:id` — Fetch a single product by ID.
+  * `POST /products` — Add a new product.
+  * `PUT /products/:id` — Update an existing product.
+  * `DELETE /products/:id` — Delete a product.
+
+* **Architecture & Project Structure:**
+  * `ProductsController.js` — Core business logic, validation, and HTTP responses.
+  * `ProductsRoutes.js` — Route definitions mapping to controller methods.
+  * `app.js` — Express application setup & route mounting.
+  * `products.js` — In-memory array data store.
+  * `views/` — Frontend template for product listing and creation form.
+
+* **Validation & Error Handling:**
+  * Returns `400 Bad Request` for missing/invalid input fields.
+  * Returns `404 Not Found` if a requested product ID doesn't exist.
+  * Proper HTTP status codes and JSON responses for all requests.
