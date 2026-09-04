@@ -1,0 +1,43 @@
+### Exercise 1: Practice Queries
+
+// 1. Find all products in Electronics category
+
+// 2. Find products with price less than $300
+
+// 3. Find out-of-stock products
+
+// 4. Find products with quantity greater than 50
+
+// 5. Find products that have "computer" tag
+
+// 6. Find Dell or Samsung products
+
+// 7. Show only name and price of all products
+
+// 8. Find products priced between $200 and $700
+
+// 9. Count Electronics products
+
+// 10. Sort products by price (descending
+
+
+### Exercise 2: Update Operations
+
+// 1. Increase price of all Electronics by 10%
+
+// 2. Mark Desk Chair as in stock with quantity 25
+
+// 3. Add a new tag "premium" to products over $500
+
+// 4. Reduce quantity by 1 for Wireless Mouse (simulate purchase)
+
+// 5. Add discount field to all products
+
+
+### Exercise 3: Delete Operations
+
+// 1. Delete products with 0 quantity
+
+// 2. Delete products in Furniture category
+
+// 3. Delete a specific product by name

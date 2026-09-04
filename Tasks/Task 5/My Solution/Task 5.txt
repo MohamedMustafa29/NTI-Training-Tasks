@@ -1,0 +1,221 @@
+Q1 : Get products with price > 100 and not deleted
+
+
+db.products.aggregate([
+  {
+    $match: {
+      isDeleted: false,
+      price: { $gt: 100 }
+    }
+  }
+])
+-----------------------------------------------------------------------------------------
+Q2 : Count products per category
+
+
+db.products.aggregate([
+  {
+    $match: { isDeleted: false }
+  },
+  {
+    $group: {
+      _id: "$category",
+      AllProducts: { $sum: 1 }
+    }
+  }
+])
+-------------------------------------------------------------------------------------------
+
+Q3 : Average price per category
+
+db.products.aggregate([
+  {
+    $match: { isDeleted: false }
+  },
+  {
+    $group: {
+      _id: "$category",
+      avgPrice: { $avg: "$price" }
+    }
+  }
+])
+-------------------------------------------------------------------------------------------
+Q4 : Cheapest product
+
+db.products.aggregate([
+  { $match: { isDeleted: false } },
+  { $sort: { price: 1 } },
+  { $limit: 1 }
+])
+---------------------------------------------------------------------------------------------
+q5 : Most expensive product per category
+
+  db.products.aggregate([
+  { $match: { isDeleted: false } },
+  { $sort: { price: -1 } },
+  {
+    $group: {
+      _id: "$category",
+      expensiveProduct: { $first: "$$ROOT" }
+    }
+  },
+
+])
+---------------------------------------------------------------------------------------------------
+q6 : Top 3 expensive products
+
+db.products.aggregate([
+  { $match: { isDeleted: false } },
+  { $sort: { price: -1 } },
+  { $limit: 3 }
+])
+----------------------------------------------------------------------------------------------------
+Q7 : Pagination (page=2, limit=5)
+
+db.products.aggregate([
+  { $match: { isDeleted: false } },
+  {$skip : 5},
+  { $limit: 5 }
+])
+----------------------------------------------------------------------------------------------------
+q8 :Show name + price only
+
+db.products.aggregate([
+	{ $match: { isDeleted: false } },
+  {$project : {name :1 , price : 1 ,_id : 0}}
+])
+----------------------------------------------------------------------------------------------------
+َQ9 : count + avg + min + max
+
+ db.products.aggregate([
+  { $match: { isDeleted: false } },
+  {
+    $group: {
+      _id: null,
+      totalCount: { $sum: 1 },
+      avgPrice: { $avg: "$price" },
+      minPrice: { $min: "$price" },
+      maxPrice: { $max: "$price" }
+      
+    }
+
+  },
+{$project : {
+  _id : 0
+
+}}
+    
+])
+-----------------------------------------------------------------------------------------------------
+Q10 : stats + highest product
+
+db.products.aggregate([
+  { $match: { isDeleted: false } },
+  {
+    $facet: {
+      "stats": [
+        {
+          $group: {
+            _id: null,
+            totalCount: { $sum: 1 },
+            avgPrice: { $avg: "$price" },
+            minPrice: { $min: "$price" },
+            maxPrice: { $max: "$price" }
+          }
+        },
+      ],
+
+      "highestProduct": [
+        { $sort: { price: -1 } },
+        { $limit: 1 }
+      ]
+    }
+  }
+])
+
+-----------------------------------------------------------------------------------------------------
+q11 :categories with count > 5
+
+db.products.aggregate([
+  { $match: { isDeleted: false } },
+  {
+    $group: {
+      _id: "$category",
+      productCount: { $sum: 1 }
+    }
+  },
+  {
+    $match: {
+      productCount: { $gt: 5 }
+    }
+  }
+])
+-----------------------------------------------------------------------------------------------------
+q12 :  sort by price desc then name asc
+
+db.products.aggregate([
+  { $match: { isDeleted: false } },
+  { $sort: { price: -1 , name : 1} },
+  
+])
+-----------------------------------------------------------------------------------------------------
+q13 : most expensive per category (name + price)
+
+db.products.aggregate([
+  { $match: { isDeleted: false } },
+  { $sort: { price: -1 } },
+  {
+    $group: {
+      _id: "$category",
+      highestProductName: { $first: "$name" },
+      maxPrice: { $first: "$price" }
+    }
+  }
+])
+-----------------------------------------------------------------------------------------------------
+q14 : category with highest avg price
+
+db.products.aggregate([
+  { $match: { isDeleted: false } }, 
+  {
+    $group: {
+      _id: "$category",
+      avgPrice: { $avg: "$price" }
+    }
+  },
+  { $sort: { avgPrice: -1 } },
+  { $limit: 1 }
+])
+-----------------------------------------------------------------------------------------------------
+َQ15 stats + topProducts + cheapProducts
+
+db.products.aggregate([
+  { $match: { isDeleted: false } },
+  {
+    $facet: {
+      "stats": [
+        {
+          $group: {
+            _id: null,
+            totalCount: { $sum: 1 },
+            avgPrice: { $avg: "$price" },
+            minPrice: { $min: "$price" },
+            maxPrice: { $max: "$price" }
+          }
+        },
+      ],
+
+      "topProducts": [
+        { $sort: { price: -1 } },
+        { $limit: 1 }
+      ],
+      "cheapProducts" : [
+         { $sort: { price: 1 } },
+        { $limit: 1 }
+      ]
+    }
+  }
+])
+-----------------------------------------------------------------------------------------------------
+--------------
+------

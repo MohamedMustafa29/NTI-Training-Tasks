@@ -1,0 +1,56 @@
+Mongo day2 task1
+
+🚀 MongoDB Aggregation Exercises
+
+🟢 Level 1
+
+▶️ Exercise 1
+Get products with price > 100 and not deleted
+
+▶️ Exercise 2
+Count products per category
+
+▶️ Exercise 3
+Average price per category
+
+▶️ Exercise 4
+Cheapest product
+
+🟡 Level 2
+
+▶️ Exercise 5
+Most expensive product per category
+
+▶️ Exercise 6
+Top 3 expensive products
+
+▶️ Exercise 7
+Pagination (page=2, limit=5)
+
+▶️ Exercise 8
+Show name + price only
+
+🔵 Level 3
+
+▶️ Exercise 9
+count + avg + min + max
+
+▶️ Exercise 10
+stats + highest product
+
+▶️ Exercise 11
+categories with count > 5
+
+▶️ Exercise 12
+sort by price desc then name asc
+
+🔴 Level 4
+
+▶️ Exercise 13
+most expensive per category (name + price)
+
+▶️ Exercise 14
+category with highest avg price
+
+▶️ Exercise 15
+stats + topProducts + cheapProducts
