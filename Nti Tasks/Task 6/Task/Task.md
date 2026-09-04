@@ -1,13 +1,31 @@
-File Organizer Task
-Task: File Organizer Script
-Objective
-Create a Node.js script that organizes files in the same directory based on their file extensions.
+### 📁 File Organizer Script Task
 
-Requirements
-Place your script inside a directory containing random files with different extensions.
+Build an automated Node.js script that dynamically organizes files within a directory by sorting them into subfolders based on their file extensions.
 
-Example:
+---
 
+#### 📌 Features & Requirements
+
+* **Core Functionality:**
+  * Reads all files in the current working directory.
+  * Dynamically creates subfolders named after file extensions (e.g., `PNG/`, `JPG/`, `JS/`).
+  * Moves each file into its corresponding extension folder automatically.
+
+* **Execution Safety & Dynamic Handling:**
+  * **Self-Preservation:** The script file (`organize.js`) remains in the root directory and is excluded from being moved.
+  * **Dynamic Mapping:** No hardcoded extension names; folder creation adapts strictly to existing files.
+  * **Edge Cases (Bonus):** Safely handles files without extensions without throwing errors or crashing.
+
+* **Tech Stack & Constraints:**
+  * Built using pure **Node.js** built-in modules (`fs` / `path`).
+  * Zero external dependencies or npm packages required.
+
+---
+
+#### 📂 Directory Structure Preview
+
+**Before Running:**
+```text
 project/
 ├── organize.js
 ├── image.png
@@ -16,65 +34,3 @@ project/
 ├── data.json
 ├── app.js
 └── style.css
-Your script should read all files in the current directory.
-
-For each file extension, create a separate folder named after that extension.
-
-Example:
-
-project/
-├── organize.js
-├── PNG/
-├── JPG/
-├── TXT/
-├── JSON/
-├── JS/
-└── CSS/
-Move each file into the folder corresponding to its extension.
-
-For example:
-
-JS/
-└── app.js
-JPG/
-└── photo.jpg
-The script file itself must remain in the main directory and must not be moved into any folder.
-
-The folder names must be generated dynamically based on the files’ extensions.
-
-Do not hard-code extension names.
-
-Expected Result
-Before Running the Script
-project/
-├── organize.js
-├── image.png
-├── photo.jpg
-├── notes.txt
-├── data.json
-├── app.js
-└── style.css
-After Running the Script
-project/
-├── organize.js
-├── PNG/
-│   └── image.png
-├── JPG/
-│   └── photo.jpg
-├── TXT/
-│   └── notes.txt
-├── JSON/
-│   └── data.json
-├── JS/
-│   └── app.js
-└── CSS/
-    └── style.css
-Bonus
-Handle files that have no extension without causing the script to crash.
-
-Suggested Node.js Modules
-You may use Node.js built-in modules such as:
-
-fs
-path
-Do not use external packages.
