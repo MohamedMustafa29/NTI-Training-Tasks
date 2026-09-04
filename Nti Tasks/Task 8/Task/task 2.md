@@ -1,32 +1,32 @@
-Task 2: Library Management System
+### 📚 Task 2: Library Management System
 
-Create a TypeScript library system with the following:
+A TypeScript object-oriented program demonstrating Interfaces, Generics, Encapsulation, and Class Constructors.
 
-Interface Book:
+---
 
-id (number)
-title (string)
-author (string)
-isAvailable (boolean)
-publishedYear (optional, number)
-Generic class Library<T>:
+#### 📌 Requirements & Features
 
-Private array to store items
-Method addItem(item: T): void
-Method getAllItems(): T[]
-Method findById(id: number): T | undefined
-Class Member with:
+* **`Book` Interface:**
+  * Properties: `id` (`number`), `title` (`string`), `author` (`string`), `isAvailable` (`boolean`), and optional `publishedYear` (`number`).
 
-Constructor: name (public), memberId (private)
-Getter for memberId
-Test your implementation
+* **Generic `Library<T>` Class:**
+  * Stores items in a private internal array.
+  * `addItem(item: T): void` — Adds an item to the collection.
+  * `getAllItems(): T[]` — Retrieves all stored items.
+  * `findById(id: number): T | undefined` — Finds a specific item by its unique ID.
 
-Expected Output:
+* **`Member` Class:**
+  * Features a constructor with `public name` and `private memberId`.
+  * Includes a Getter method for secure access to `memberId`.
 
-// Your implementation here
-// Test
+---
+
+#### 💻 Expected Usage & Output
+
+```typescript
 const library = new Library<Book>();
 library.addItem({ id: 1, title: "1984", author: "George Orwell", isAvailable: true });
+
 const member = new Member("John Doe", 101);
-console.log(member.borrowBook(/* book */));
-// "John Doe borrowed 1984"
+console.log(member.borrowBook(library.findById(1)));
+// Output: "John Doe borrowed 1984"
